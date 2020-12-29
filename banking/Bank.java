@@ -7,23 +7,29 @@ public class Bank {
     }
 
     public void start_banking(){
-        Account fahad = new Account("Fahad", "01766610087");
-        Account esha = new Account("Esha", "01722453465");
+        String fahad_pin = "1234";
+        String esha_pin = "4321";
+        Account fahad = new Account("Fahad", "01766610087", fahad_pin);
+        Account esha = new Account("Esha", "01722453465", esha_pin);
+
+        System.out.println(fahad);
+
+        System.out.println(esha);
 
         fahad.add_money(1500);
         esha.add_money(2000);
 
-        fahad.cash_out(1000);
+        fahad.cash_out(1000, esha_pin);
 
-        System.out.println(fahad.getAccount_holder_name()+ "; "
-                + fahad.getAccount_pnone_number() + "; "
-                + fahad.getBalance());
+//        Fahad pin update
+//        if (fahad.pin_update("1234", "1122"))
+//            fahad_pin = "1122";
+//        else
+//            fahad_pin = fahad_pin;
 
-        System.out.println(esha.getAccount_holder_name()+ "; "
-                + esha.getAccount_pnone_number() + "; "
-                + esha.getBalance());
+        fahad_pin = fahad.pin_update("1234","1122") ? "1122" : fahad_pin;
 
-        fahad.cash_out(1000);
+        fahad.cash_out(1200, fahad_pin);
 
     }
 }
